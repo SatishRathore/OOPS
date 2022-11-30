@@ -29,11 +29,13 @@ namespace OOPS
             Console.WriteLine("---protected start ----");
 
             //protected block
-            X obj1 = new X();
-            Y obj2 = new Y();
+            protectedX obj1 = new protectedX();
+            Inherit_protectedX_Y obj2 = new Inherit_protectedX_Y();
 
             // Displaying the value of x
+            //The code is accessible in a class that is inherited from that class like i can access X
             Console.WriteLine("Value of x(protected) is : {0}", obj2.getX());
+            //The code is accessible within the same class like i can't access X
             Console.WriteLine("Value of y(public) is : {0}", obj1.y);
 
             Console.WriteLine("--- protected end ----");
@@ -48,6 +50,8 @@ namespace OOPS
 
             // Accessible in class Program
             c.setDataPublic(2, 1);
+
+            //can't access protected internal due to protection level
             //c.displayDataPublic();
 
 
@@ -130,7 +134,7 @@ namespace OOPS
     #endregion
 
     #region protected
-    class X
+    class protectedX
     {
 
         // Member x declared
@@ -138,7 +142,7 @@ namespace OOPS
         protected int x;
         public string y;
 
-        public X()
+        public protectedX()
         {
             x = 10;
             y = "I am public";
@@ -147,7 +151,7 @@ namespace OOPS
 
     // class Y inherits the
     // class X
-    class Y : X
+    class Inherit_protectedX_Y : protectedX
     {
 
         // Members of Y can access 'x'
